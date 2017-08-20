@@ -1,0 +1,45 @@
+%!TEX program = xelatex
+% not lualatex because of a pgf bug: https://sourceforge.net/p/pgf/bugs/384/
+\documentclass[12pt, a4paper]{report}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{hyperref}
+\usepackage{utbmcovers}
+
+%----------------------------------------
+% hyperref configuration
+%----------------------------------------
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=,
+}
+
+%----------------------------------------
+% utbmcovers configuration
+%----------------------------------------
+
+\setutbmfrontillustration{utbm_default_illustration}
+\setutbmtitle{Analyse de durabilité des systèmes\\ de propulsion par microcontrôleurs externes}
+\setutbmsubtitle{Rapport de stage ST50 - P2008}
+\setutbmstudent{JACQUES Pierre-Paul}
+\setutbmstudentdepartment{Département Génie électrique\\ et systèmes de commande}
+\setutbmstudentpathway{Filière Commande des systèmes\\ et automatismes}
+\setutbmcompany{Entreprise DEMO-Contrôleurs}
+\setutbmcompanyaddress{8 rue de la Fierté\\ 75 013 Paris}
+\setutbmcompanywebsite{\href{www.democontroleurs.com}{www.democontroleurs.com}}
+\setutbmcompanytutor{JACQUES Pierre-Paul}
+\setutbmschooltutor{JACQUES Pierre-Paul}
+\setutbmkeywords{Mot clef 1 - Mot clef 2 - Mot clef 3 - Mot clef 4 - Mot clef 5 - Mot clef 6\\ Mot clef 7 – Mot clef 8}
+\setutbmabstract{
+	Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
+}
+
+%----------------------------------------
+% document
+%----------------------------------------
+
+\begin{document}
+	\makeutbmfrontcover{}
+	\makeutbmbackcover{}
+\end{document}
