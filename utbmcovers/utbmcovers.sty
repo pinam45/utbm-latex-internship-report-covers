@@ -1,0 +1,356 @@
+% MIT License
+%
+% Copyright (c) 2017 Maxime Pinard
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in all
+% copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+% SOFTWARE.
+
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{utbmcovers}
+  [30/07/2017 V1.0, utbm covers]
+
+%----------------------------------------
+% Required packages
+%----------------------------------------
+
+\RequirePackage{fontspec} % For Tahoma font
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+
+%----------------------------------------
+% Colors definitions
+%----------------------------------------
+
+\definecolor{utbm_cover_background}{RGB}{255,255,255}
+
+\definecolor{utbm_cover_univname}{RGB}{0,0,0}
+\definecolor{utbm_cover_univname_text}{RGB}{255,255,255}
+
+\definecolor{utbm_cover_title}{RGB}{125,92,139}
+\definecolor{utbm_cover_title_text}{RGB}{255,255,255}
+
+\definecolor{utbm_cover_subtitle}{RGB}{79,78,85}
+\definecolor{utbm_cover_subtitle_text}{RGB}{255,255,255}
+
+\definecolor{utbm_cover_main}{RGB}{217,217,87}
+\definecolor{utbm_cover_main_text}{RGB}{0,0,0}
+\definecolor{utbm_cover_main_shadow_text}{RGB}{153,153,153}
+
+%----------------------------------------
+% Font definition
+%----------------------------------------
+
+\newfontfamily\tahomafont{Tahoma}
+
+%----------------------------------------
+% Default values
+%----------------------------------------
+
+%-----
+% Default texts and images not related to the student or the company
+\newcommand{\@defaultutbmschoolname}{\iflanguage{french}{{\bfseries UNIVERSITÉ DE TECHNOLOGIE} DE BELFORT-MONTBÉLIARD}{{\bfseries UNIVERSITY OF TECHNOLOGY} OF BELFORT-MONTBÉLIARD}}
+\newcommand{\@defaultutbmcompanytutortext}{\iflanguage{french}{Tuteur en entreprise}{Company tutor}}
+\newcommand{\@defaultutbmschooltutortext}{\iflanguage{french}{Suiveur UTBM}{UTBM tutor}}
+\newcommand{\@defaultutbmkeywordstext}{\iflanguage{french}{Mots clefs}{Keywords}}
+\newcommand{\@defaultutbmabstracttext}{\iflanguage{french}{Résumé}{Abstract}}
+\newcommand{\@defaultutbmschoollogo}{utbm_logo}
+
+%-----
+% Default texts and images related to the student or the company
+\newcommand{\@defaultutbmfrontillustration}{utbm_default_illustration}
+\newcommand{\@defaultutbmtitle}{\iflanguage{french}{Titre}{Title}}
+\newcommand{\@defaultutbmsubtitle}{\iflanguage{french}{Subtitle}{Subtitle}}
+\newcommand{\@defaultutbmstudent}{\iflanguage{french}{Nom Étudiant}{Student name}}
+\newcommand{\@defaultutbmstudentdepartment}{\iflanguage{french}{Département}{Department}}
+\newcommand{\@defaultutbmstudentpathway}{\iflanguage{french}{Filière}{Pathway}}
+\newcommand{\@defaultutbmcompany}{\iflanguage{french}{Entreprise}{Company}}
+\newcommand{\@defaultutbmcompanyaddress}{\iflanguage{french}{Adresse}{Address}}
+\newcommand{\@defaultutbmcompanywebsite}{\iflanguage{french}{Site web}{Website}}
+\newcommand{\@defaultutbmcompanytutor}{\iflanguage{french}{Nom tuteur en entreprise}{Company tutor name}}
+\newcommand{\@defaultutbmschooltutor}{\iflanguage{french}{Nom suiveur UTBM}{UTBM tutor name}}
+\newcommand{\@defaultutbmkeywords}{\iflanguage{french}{Liste de mots clefs}{List of keywords}}
+\newcommand{\@defaultutbmabstract}{\iflanguage{french}{Texte du résumé}{Abstract text}}
+
+%----------------------------------------
+% Configuration commands
+%----------------------------------------
+% Commands to set the texts and images not related to the student or the company
+% Default configuration for English and French languages, use the commands for other languages
+
+%-----
+% Set the school name
+% \setutbmschoolname{name}
+\newcommand{\setutbmschoolname}[1]{\renewcommand{\@utbmschoolname}{#1}}
+\newcommand{\@utbmschoolname}{\@defaultutbmschoolname}
+
+%-----
+% Set the text for the company tutor
+% \setutbmcompanytutortext{text}
+\newcommand{\setutbmcompanytutortext}[1]{\renewcommand{\@utbmcompanytutortext}{#1}}
+\newcommand{\@utbmcompanytutortext}{\@defaultutbmcompanytutortext}
+
+%-----
+% Set the text for the school tutor
+% \setutbmschooltutortext{text}
+\newcommand{\setutbmschooltutortext}[1]{\renewcommand{\@utbmschooltutortext}{#1}}
+\newcommand{\@utbmschooltutortext}{\@defaultutbmschooltutortext}
+
+%-----
+% Set the text for the keywords
+% \setutbmkeywordstext{text}
+\newcommand{\setutbmkeywordstext}[1]{\renewcommand{\@utbmkeywordstext}{#1}}
+\newcommand{\@utbmkeywordstext}{\@defaultutbmkeywordstext}
+
+%-----
+% Set the text for the abstract
+% \setutbmabstracttext{text}
+\newcommand{\setutbmabstracttext}[1]{\renewcommand{\@utbmabstracttext}{#1}}
+\newcommand{\@utbmabstracttext}{\@defaultutbmabstracttext}
+
+%-----
+% Set the school logo (the file name can be as in the \includegraphics command)
+% \setutbmschoollogo{filename}
+\newcommand{\setutbmschoollogo}[1]{\renewcommand{\@utbmschoollogo}{#1}}
+\newcommand{\@utbmschoollogo}{\@defaultutbmschoollogo}
+
+%----------------------------------------
+% Informations setting commands
+%----------------------------------------
+% Commands to set the texts and images related to the student or the company
+% Default configuration can be used to see where will be displayed each information
+% but the commands should be used to set the cover informations
+
+%-----
+% Set the illustration figure on the front page (the file name can be as in the \includegraphics command)
+% \setutbmfrontillustration{filename}
+\newcommand{\setutbmfrontillustration}[1]{\renewcommand{\@utbmfrontillustration}{#1}}
+\newcommand{\@utbmfrontillustration}{\@defaultutbmfrontillustration}
+
+%-----
+% Set the title
+% \setutbmtitle{title}
+\newcommand{\setutbmtitle}[1]{\renewcommand{\@utbmtitle}{#1}}
+\newcommand{\@utbmtitle}{\@defaultutbmtitle}
+
+%-----
+% Set the subtitle
+% \setutbmsubtitle{subtitle}
+\newcommand{\setutbmsubtitle}[1]{\renewcommand{\@utbmsubtitle}{#1}}
+\newcommand{\@utbmsubtitle}{\@defaultutbmsubtitle}
+
+%-----
+% Set the student
+% \setutbmstudent{name}
+\newcommand{\setutbmstudent}[1]{\renewcommand{\@utbmstudent}{#1}}
+\newcommand{\@utbmstudent}{\@defaultutbmstudent}
+
+%-----
+% Set the student department
+% \setutbmstudentdepartment{department}
+\newcommand{\setutbmstudentdepartment}[1]{\renewcommand{\@utbmstudentdepartment}{#1}}
+\newcommand{\@utbmstudentdepartment}{\@defaultutbmstudentdepartment}
+
+%-----
+% Set the student pathway
+% \setutbmstudentpathway{pathway}
+\newcommand{\setutbmstudentpathway}[1]{\renewcommand{\@utbmstudentpathway}{#1}}
+\newcommand{\@utbmstudentpathway}{\@defaultutbmstudentpathway}
+
+%-----
+% Set the company
+% \setutbmcompany{name}
+\newcommand{\setutbmcompany}[1]{\renewcommand{\@utbmcompany}{#1}}
+\newcommand{\@utbmcompany}{\@defaultutbmcompany}
+
+%-----
+% Set the company address
+% \setutbmcompanyaddress{address}
+\newcommand{\setutbmcompanyaddress}[1]{\renewcommand{\@utbmcompanyaddress}{#1}}
+\newcommand{\@utbmcompanyaddress}{\@defaultutbmcompanyaddress}
+
+%-----
+% Set the company website
+% \setutbmcompanywebsite{website}
+\newcommand{\setutbmcompanywebsite}[1]{\renewcommand{\@utbmcompanywebsite}{#1}}
+\newcommand{\@utbmcompanywebsite}{\@defaultutbmcompanywebsite}
+
+%-----
+% Set the company tutor
+% \setutbmcompanytutor{tutor}
+\newcommand{\setutbmcompanytutor}[1]{\renewcommand{\@utbmcompanytutor}{#1}}
+\newcommand{\@utbmcompanytutor}{\@defaultutbmcompanytutor}
+
+%-----
+% Set the school tutor
+% \setutbmschooltutor{tutor}
+\newcommand{\setutbmschooltutor}[1]{\renewcommand{\@utbmschooltutor}{#1}}
+\newcommand{\@utbmschooltutor}{\@defaultutbmschooltutor}
+
+%-----
+% Set the keywords
+% \setutbmkeywords{keywords}
+\newcommand{\setutbmkeywords}[1]{\renewcommand{\@utbmkeywords}{#1}}
+\newcommand{\@utbmkeywords}{\@defaultutbmkeywords}
+
+%-----
+% Set the abstract
+% \setutbmabstract{abstract}
+\newcommand{\setutbmabstract}[1]{\renewcommand{\@utbmabstract}{#1}}
+\newcommand{\@utbmabstract}{\@defaultutbmabstract}
+
+%----------------------------------------
+% Cover generation commands
+%----------------------------------------
+
+%-----
+% Make the front cover
+% \makeutbmfrontcover[shift]
+\newcommand{\makeutbmfrontcover}[1][(0,0)]{
+	\clearpage
+	\thispagestyle{empty}
+	\parindent0pt
+	\begin{tikzpicture}
+	[remember picture, overlay,
+	utbm text/.style={text badly ragged, inner xsep=1cm, outer sep=0pt, text width=\paperwidth-2cm, anchor=north},
+	utbm rectangle/.style={rectangle, inner sep=0pt, outer sep=0pt, anchor=north, minimum width=\paperwidth}]
+
+		\node[shift={#1}, inner sep=0pt, anchor=north, minimum width=\paperwidth, minimum height=\paperheight]
+		(anchor) at (current page.north)
+		{};
+
+		\node[utbm rectangle, fill=utbm_cover_background, minimum height=\paperheight]
+		(background) at (anchor.north)
+		{};
+
+		% Hide illustration if too hight
+		\node[yshift=-8.6cm, utbm rectangle, fill=utbm_cover_background, minimum height=\paperheight-8.6cm]
+		(background2) at (anchor.north)
+		{};
+
+		\node[inner sep=0pt, anchor=north]
+		(illustration) at (anchor.north)
+		{\includegraphics[width=\paperwidth]{\@utbmfrontillustration}};
+
+		\node[yshift=-8.6cm, utbm text, fill=utbm_cover_univname, text=utbm_cover_univname_text, minimum height=0.8cm]
+		(schoolname) at (anchor.north)
+		{\tahomafont\fontsize{14.4}{17.2}\selectfont \@utbmschoolname};
+
+		\node[utbm text, fill=utbm_cover_title, text=utbm_cover_title_text, minimum height=2.8cm]
+		(title) at (schoolname.south)
+		{\tahomafont\fontsize{24}{29}\selectfont \bfseries \@utbmtitle};
+
+		\node[utbm text, fill=utbm_cover_subtitle, text=utbm_cover_subtitle_text, minimum height=0.8cm]
+		(subtitle) at (title.south)
+		{\tahomafont\fontsize{12}{14}\selectfont \bfseries \@utbmsubtitle};
+
+		\node[utbm rectangle, fill=utbm_cover_main, minimum height=13.65cm]
+		(information) at (subtitle.south)
+		{};
+
+		\node[yshift=-1.3cm, utbm text, text=black, minimum height=0.8cm]
+		(student) at (subtitle.south)
+		{\tahomafont\bfseries {\fontsize{18}{22}\selectfont \@utbmstudent}\\
+		\hfil\\
+		{\fontsize{10}{12}\selectfont \@utbmstudentdepartment\\
+		{\color{utbm_cover_main_shadow_text} \@utbmstudentpathway}}};
+
+		\node[yshift=-6.4cm, utbm text, text=utbm_cover_main_text, minimum height=0.8cm]
+		(company) at (subtitle.south)
+		{\tahomafont\bfseries {\fontsize{20}{24}\selectfont \@utbmcompany}\\
+		{\fontsize{12}{14}\selectfont\color{utbm_cover_main_shadow_text} \@utbmcompanyaddress\\
+		\@utbmcompanywebsite}};
+
+		\node[yshift=-10.8cm, utbm text, text=utbm_cover_main_text, minimum height=0.8cm]
+		(company_tutor) at (subtitle.south)
+		{\tahomafont {\fontsize{12}{14}\selectfont\color{utbm_cover_main_shadow_text} \@utbmcompanytutortext}\\
+		\vspace*{0.7mm}{\fontsize{14}{17}\selectfont\bfseries \@utbmcompanytutor}};
+
+		\node[yshift=-10.8cm, utbm text, align=right, text=utbm_cover_main_text, minimum height=0.8cm]
+		(school_tutor) at (subtitle.south)
+		{\tahomafont {\fontsize{12}{14}\selectfont\color{utbm_cover_main_shadow_text} \@utbmschooltutortext}\\
+		\vspace*{0.7mm}{\fontsize{14}{17}\selectfont\bfseries \@utbmschooltutor}};
+
+		\node[yshift=0.7cm, xshift=-1cm, inner sep=0pt, anchor=south east]
+		(schoollogo) at (anchor.south east)
+		{\includegraphics[width=5.18cm]{\@utbmschoollogo}};
+	\end{tikzpicture}
+	\newpage{}
+}
+
+%-----
+% Make the back cover
+% \makeutbmbackcover[shift]
+\newcommand{\makeutbmbackcover}[1][(0,0)]{
+	\clearpage \ifodd\value{page}\hbox{}\newpage\fi
+	\thispagestyle{empty}
+	\parindent0pt
+	\begin{tikzpicture}
+	[remember picture, overlay,
+	utbm text/.style={text badly ragged, inner xsep=1cm, outer sep=0pt, text width=\paperwidth-2cm},
+	utbm rectangle/.style={rectangle, inner sep=0pt, outer sep=0pt, anchor=north, minimum width=\paperwidth}]
+
+		\node[shift={#1}, inner sep=0pt, anchor=north, minimum width=\paperwidth, minimum height=\paperheight]
+		(anchor) at (current page.north)
+		{};
+
+		\node[utbm rectangle, fill=utbm_cover_background, minimum height=\paperheight]
+		(background) at (anchor.north)
+		{};
+
+		\node[yshift=-8.4cm, utbm rectangle, fill=utbm_cover_subtitle, minimum height=1cm]
+		(line) at (anchor.north)
+		{};
+
+		\node[utbm rectangle, fill=utbm_cover_main, minimum height=17.25cm]
+		(information) at (line.south)
+		{};
+
+		\node[yshift=-1.5cm, utbm text, text=utbm_cover_main_text, anchor=north, minimum height=0.8cm]
+		(keywords) at (anchor.north)
+		{\tahomafont\fontsize{12}{14}\selectfont {\bfseries \@utbmkeywordstext}\\
+		\hfil\\
+		\@utbmkeywords};
+
+		\node[yshift=0.25cm, utbm text, text=utbm_cover_main_text, anchor=south, minimum height=0.8cm]
+		(student) at (line.north)
+		{\tahomafont\fontsize{14}{17}\selectfont\bfseries \@utbmstudent};
+
+		\node[yshift=0.25cm, utbm text, align=right, text=utbm_cover_main_text, anchor=south, minimum height=0.8cm]
+		(subtitle) at (line.north)
+		{\tahomafont\fontsize{14}{17}\selectfont\bfseries \@utbmsubtitle};
+
+		\node[yshift=-1.2cm, utbm text, text justified, text=utbm_cover_main_text, anchor=north, minimum height=0.8cm]
+		(abstract) at (information.north)
+		{\tahomafont\fontsize{12}{14}\selectfont {\bfseries \@utbmabstracttext}\\
+		\hfil\\
+		\@utbmabstract};
+
+		\node[yshift=0.5cm, utbm text, text=utbm_cover_main_text, anchor=south, minimum height=0.8cm]
+		(company) at (information.south)
+		{\tahomafont\bfseries {\fontsize{20}{24}\selectfont \@utbmcompany}\\
+		{\fontsize{12}{14}\selectfont\color{utbm_cover_main_shadow_text} \@utbmcompanyaddress\\
+		\@utbmcompanywebsite}};
+
+		\node[yshift=0.7cm, xshift=-1cm, inner sep=0pt, anchor=south east]
+		(schoollogo) at (anchor.south east)
+		{\includegraphics[width=5.18cm]{\@utbmschoollogo}};
+	\end{tikzpicture}
+}
+
+\endinput
