@@ -20,9 +20,9 @@ To load the Tahoma font, the fontspec package is used which means the document m
 
 ## Install the package
 
-Copy the directory [utbmcovers](utbmcovers) inside one of your **texmf** directory: to follow the TDS (TeX Directory Structure), copy it in `` <texmf_folder>/tex/latex/``.
+Copy the directory [utbmcovers](utbmcovers) inside one of your **texmf** directory: to follow the TDS (TeX Directory Structure), copy it in ``<texmf_folder>/tex/latex/``.
 
-Your **texmf** directory is usually ``usr/share/texmf/tex/latex/tex-templates`` or ``$HOME/.texmf`` on Unix operating systems.
+Your **texmf** directory is usually ``$HOME/texmf`` on Unix operating systems.
 
 On Windows with MiKTeX you can find it in MiKTeX's options:
 - Start menu -> MiKTeX -> MiKTeX settings
@@ -33,7 +33,7 @@ On Windows with MiKTeX you can find it in MiKTeX's options:
 
 ## Refresh the LaTeX databases
 
-On Unix operating systems:
+On Unix operating systems, in root:
 ```
 $> mktexlsr
 $> update-updmap --quiet
