@@ -225,68 +225,143 @@
 	\clearpage
 	\thispagestyle{empty}
 	\parindent0pt
-	\begin{tikzpicture}
-	[remember picture, overlay,
-	utbm text/.style={text badly ragged, inner xsep=1cm, outer sep=0pt, text width=\paperwidth-2cm, anchor=north},
-	utbm rectangle/.style={rectangle, inner sep=0pt, outer sep=0pt, anchor=north, minimum width=\paperwidth}]
+	\begin{tikzpicture}[remember picture,overlay]
+		\tikzset{
+			utbm text/.style={
+				text badly ragged,
+				inner xsep=1cm,
+				outer sep=0pt,
+				text width=\paperwidth-2cm,
+				anchor=north,
+			},
+			utbm rectangle/.style={
+				rectangle,
+				inner sep=0pt,
+				outer sep=0pt,
+				anchor=north,
+				minimum width=\paperwidth,
+			}
+		}
 
-		\node[shift={#1}, inner sep=0pt, anchor=north, minimum width=\paperwidth, minimum height=\paperheight]
+		\node[
+			shift={#1},
+			inner sep=0pt,
+			anchor=north,
+			minimum width=\paperwidth,
+			minimum height=\paperheight,
+		]
 		(anchor) at (current page.north)
 		{};
 
-		\node[utbm rectangle, fill=utbm_cover_background, minimum height=\paperheight]
+		\node[
+			utbm rectangle,
+			fill=utbm_cover_background,
+			minimum height=\paperheight,
+		]
 		(background) at (anchor.north)
 		{};
 
 		% Hide illustration if too hight
-		\node[yshift=-8.6cm, utbm rectangle, fill=utbm_cover_background, minimum height=\paperheight-8.6cm]
+		\node[
+			yshift=-8.6cm,
+			utbm rectangle,
+			fill=utbm_cover_background,
+			minimum height=\paperheight-8.6cm,
+		]
 		(background2) at (anchor.north)
 		{};
 
-		\node[inner sep=0pt, anchor=north]
+		\node[
+			inner sep=0pt,
+			anchor=north,
+		]
 		(illustration) at (anchor.north)
 		{\includegraphics[width=\paperwidth]{\@utbmfrontillustration}};
 
-		\node[yshift=-8.6cm, utbm text, fill=utbm_cover_univname, text=utbm_cover_univname_text, minimum height=0.8cm]
+		\node[
+			yshift=-8.6cm,
+			utbm text,
+			fill=utbm_cover_univname,
+			text=utbm_cover_univname_text,
+			minimum height=0.8cm,
+		]
 		(schoolname) at (anchor.north)
 		{\tahomafont\fontsize{14.4}{17.2}\selectfont \@utbmschoolname};
 
-		\node[utbm text, fill=utbm_cover_title, text=utbm_cover_title_text, minimum height=2.8cm]
+		\node[utbm text,
+			fill=utbm_cover_title,
+			text=utbm_cover_title_text,
+			minimum height=2.8cm,
+		]
 		(title) at (schoolname.south)
 		{\tahomafont\fontsize{24}{29}\selectfont \bfseries \@utbmtitle};
 
-		\node[utbm text, fill=utbm_cover_subtitle, text=utbm_cover_subtitle_text, minimum height=0.8cm]
+		\node[utbm text,
+			fill=utbm_cover_subtitle,
+			text=utbm_cover_subtitle_text,
+			minimum height=0.8cm,
+		]
 		(subtitle) at (title.south)
 		{\tahomafont\fontsize{12}{14}\selectfont \bfseries \@utbmsubtitle};
 
-		\node[utbm rectangle, fill=utbm_cover_main, minimum height=13.65cm]
+		\node[
+			utbm rectangle,
+			fill=utbm_cover_main,
+			minimum height=13.65cm,
+		]
 		(information) at (subtitle.south)
 		{};
 
-		\node[yshift=-1.3cm, utbm text, text=black, minimum height=0.8cm]
+		\node[
+			yshift=-1.3cm,
+			utbm text,
+			text=black,
+			minimum height=0.8cm,
+		]
 		(student) at (subtitle.south)
 		{\tahomafont\bfseries {\fontsize{18}{22}\selectfont \@utbmstudent}\\
 		\hfil\\
 		{\fontsize{10}{12}\selectfont \@utbmstudentdepartment\\
 		{\color{utbm_cover_main_shadow_text} \@utbmstudentpathway}}};
 
-		\node[yshift=-6.4cm, utbm text, text=utbm_cover_main_text, minimum height=0.8cm]
+		\node[
+			yshift=-6.4cm,
+			utbm text,
+			text=utbm_cover_main_text,
+			minimum height=0.8cm,
+		]
 		(company) at (subtitle.south)
 		{\tahomafont\bfseries {\fontsize{20}{24}\selectfont \@utbmcompany}\\
 		{\fontsize{12}{14}\selectfont\color{utbm_cover_main_shadow_text} \@utbmcompanyaddress\\
 		\@utbmcompanywebsite}};
 
-		\node[yshift=-10.8cm, utbm text, text=utbm_cover_main_text, minimum height=0.8cm]
+		\node[
+			yshift=-10.8cm,
+			utbm text,
+			text=utbm_cover_main_text,
+			minimum height=0.8cm,
+		]
 		(company_tutor) at (subtitle.south)
 		{\tahomafont {\fontsize{12}{14}\selectfont\color{utbm_cover_main_shadow_text} \@utbmcompanytutortext}\\
 		\vspace*{0.7mm}{\fontsize{14}{17}\selectfont\bfseries \@utbmcompanytutor}};
 
-		\node[yshift=-10.8cm, utbm text, align=right, text=utbm_cover_main_text, minimum height=0.8cm]
+		\node[
+			yshift=-10.8cm,
+			utbm text,
+			align=right,
+			text=utbm_cover_main_text,
+			minimum height=0.8cm,
+		]
 		(school_tutor) at (subtitle.south)
 		{\tahomafont {\fontsize{12}{14}\selectfont\color{utbm_cover_main_shadow_text} \@utbmschooltutortext}\\
 		\vspace*{0.7mm}{\fontsize{14}{17}\selectfont\bfseries \@utbmschooltutor}};
 
-		\node[yshift=0.7cm, xshift=-1cm, inner sep=0pt, anchor=south east]
+		\node[
+			yshift=0.7cm,
+			xshift=-1cm,
+			inner sep=0pt,
+			anchor=south east,
+		]
 		(schoollogo) at (anchor.south east)
 		{\includegraphics[width=5.18cm]{\@utbmschoollogo}};
 	\end{tikzpicture}
@@ -300,54 +375,122 @@
 	\clearpage \ifodd\value{page}\hbox{}\newpage\fi
 	\thispagestyle{empty}
 	\parindent0pt
-	\begin{tikzpicture}
-	[remember picture, overlay,
-	utbm text/.style={text badly ragged, inner xsep=1cm, outer sep=0pt, text width=\paperwidth-2cm},
-	utbm rectangle/.style={rectangle, inner sep=0pt, outer sep=0pt, anchor=north, minimum width=\paperwidth}]
+	\begin{tikzpicture}[remember picture,overlay]
+		\tikzset{
+			utbm text/.style={
+				text badly ragged,
+				inner xsep=1cm,
+				outer sep=0pt,
+				text width=\paperwidth-2cm,
+			},
+			utbm rectangle/.style={
+				rectangle,
+				inner sep=0pt,
+				outer sep=0pt,
+				anchor=north,
+				minimum width=\paperwidth,
+			}
+		}
 
-		\node[shift={#1}, inner sep=0pt, anchor=north, minimum width=\paperwidth, minimum height=\paperheight]
+		\node[
+			shift={#1},
+			inner sep=0pt,
+			anchor=north,
+			minimum width=\paperwidth,
+			minimum height=\paperheight,
+		]
 		(anchor) at (current page.north)
 		{};
 
-		\node[utbm rectangle, fill=utbm_cover_background, minimum height=\paperheight]
+		\node[
+			utbm rectangle,
+			fill=utbm_cover_background,
+			minimum height=\paperheight,
+		]
 		(background) at (anchor.north)
 		{};
 
-		\node[yshift=-8.4cm, utbm rectangle, fill=utbm_cover_subtitle, minimum height=1cm]
+		\node[
+			yshift=-8.4cm,
+			utbm rectangle,
+			fill=utbm_cover_subtitle,
+			minimum height=1cm,
+		]
 		(line) at (anchor.north)
 		{};
 
-		\node[utbm rectangle, fill=utbm_cover_main, minimum height=17.25cm]
+		\node[
+			utbm rectangle,
+			fill=utbm_cover_main,
+			minimum height=17.25cm,
+		]
 		(information) at (line.south)
 		{};
 
-		\node[yshift=-1.5cm, utbm text, text=utbm_cover_main_text, anchor=north, minimum height=0.8cm]
+		\node[
+			yshift=-1.5cm,
+			utbm text,
+			text=utbm_cover_main_text,
+			anchor=north,
+			minimum height=0.8cm,
+		]
 		(keywords) at (anchor.north)
 		{\tahomafont\fontsize{12}{14}\selectfont {\bfseries \@utbmkeywordstext}\\
 		\hfil\\
 		\@utbmkeywords};
 
-		\node[yshift=0.25cm, utbm text, text=utbm_cover_main_text, anchor=south, minimum height=0.8cm]
+		\node[
+			yshift=0.25cm,
+			utbm text,
+			text=utbm_cover_main_text,
+			anchor=south,
+			minimum height=0.8cm,
+		]
 		(student) at (line.north)
 		{\tahomafont\fontsize{14}{17}\selectfont\bfseries \@utbmstudent};
 
-		\node[yshift=0.25cm, utbm text, align=right, text=utbm_cover_main_text, anchor=south, minimum height=0.8cm]
+		\node[
+			yshift=0.25cm,
+			utbm text,
+			align=right,
+			text=utbm_cover_main_text,
+			anchor=south,
+			minimum height=0.8cm,
+		]
 		(subtitle) at (line.north)
 		{\tahomafont\fontsize{14}{17}\selectfont\bfseries \@utbmsubtitle};
 
-		\node[yshift=-1.2cm, utbm text, text justified, text=utbm_cover_main_text, anchor=north, minimum height=0.8cm]
+		\node[
+			yshift=-1.2cm,
+			utbm text,
+			text justified,
+			text=utbm_cover_main_text,
+			anchor=north,
+			minimum height=0.8cm,
+		]
 		(abstract) at (information.north)
 		{\tahomafont\fontsize{12}{14}\selectfont {\bfseries \@utbmabstracttext}\\
 		\hfil\\
 		\@utbmabstract};
 
-		\node[yshift=0.5cm, utbm text, text=utbm_cover_main_text, anchor=south, minimum height=0.8cm]
+		\node[
+			yshift=0.5cm,
+			utbm text,
+			text=utbm_cover_main_text,
+			anchor=south,
+			minimum height=0.8cm,
+		]
 		(company) at (information.south)
 		{\tahomafont\bfseries {\fontsize{20}{24}\selectfont \@utbmcompany}\\
 		{\fontsize{12}{14}\selectfont\color{utbm_cover_main_shadow_text} \@utbmcompanyaddress\\
 		\@utbmcompanywebsite}};
 
-		\node[yshift=0.7cm, xshift=-1cm, inner sep=0pt, anchor=south east]
+		\node[
+			yshift=0.7cm,
+			xshift=-1cm,
+			inner sep=0pt,
+			anchor=south east,
+		]
 		(schoollogo) at (anchor.south east)
 		{\includegraphics[width=5.18cm]{\@utbmschoollogo}};
 	\end{tikzpicture}
