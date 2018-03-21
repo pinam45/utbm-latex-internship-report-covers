@@ -72,3 +72,7 @@ An upmethodology extension is included with the package, in your ``.tex`` docume
 before using the *utbmcovers* configuration functions.
 
 See [latex-upmethodology-version.tex](latex-upmethodology-version.tex) for a complete example.
+
+# Other resources
+
+[utbm-beamer-theme](https://github.com/pinam45/utbm-beamer-theme): A LaTeX beamer version of the UTBM presentation theme using TikZ.
